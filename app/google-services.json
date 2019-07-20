@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "551323466606",
+    "firebase_url": "https://jkhhakkaton.firebaseio.com",
+    "project_id": "jkhhakkaton",
+    "storage_bucket": "jkhhakkaton.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551323466606:android:9092313f08e9f055",
+        "android_client_info": {
+          "package_name": "ru.lazybones.jkh.jkhapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551323466606-flvll3m6a4dhqqbo0lvom67s70kftorf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.lazybones.jkh.jkhapp",
+            "certificate_hash": "d3a2f54be85c54c1976ef0a6e3badb75d8465180"
+          }
+        },
+        {
+          "client_id": "551323466606-oocgi3m0884e77025qlilqmsto3teeb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqjE06CBlN0KCt5HlaGJAJLaAbafbIEd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551323466606-oocgi3m0884e77025qlilqmsto3teeb0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -236,7 +236,7 @@ public class SignINActivity extends AppCompatActivity {
 
         //место для добавления нового пользователя в базу данных
 
-        Intent intent = new Intent(SignINActivity.this, MainActivity.class);
+        Intent intent = new Intent(SignINActivity.this, MainDrawActivity.class);
         startActivity(intent);
         finish();
     }

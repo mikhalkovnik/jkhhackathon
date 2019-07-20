@@ -2,8 +2,6 @@
     <string name="app_name">JKHapp</string>
 
 
-
-
     <string name="recomendstext">Рекомендуемые</string>
 
     <string name="watchall_text">Смотреть все</string>
@@ -14,7 +12,6 @@
     <string name="view_button_text">Посмотреть</string>
 
     <string name="recom_text2">Строительные материалы</string>
-
 
 
     <string name="enterphone_text">Введите ваш телефон</string>
@@ -34,13 +31,9 @@
     <string name="profile">Профиль</string>
 
 
-
-
-
     <string name="Createquest_text">Создать свое задание</string>
 
     <string name="paric_text">Парикмахер</string>
-
 
 
     <string name="livingrooms_text">Жилье</string>
@@ -66,7 +59,6 @@
     <string name="repiar_text">Внутренний ремонт</string>
 
 
-
     <string name="profile_text">Профиль</string>
 
     <string name="changeName_text">Изменить имя</string>
@@ -77,7 +69,6 @@
     <string name="enterFullName_text">Введите Ваше полное имя</string>
 
     <string name="addCategories_text">добавить категорию</string>
-
 
 
     <string name="chCat_text">Выбрать Категорию</string>
@@ -105,7 +96,6 @@
 
 
     <string name="mycaterories">Мои категории:</string>
-
 
 
     <string name="zakaz">Заказ</string>
@@ -201,11 +191,9 @@
     <string name="title_activity_services">ServicesActivity</string>
 
 
-
     <string name="textrepearRU">Ремонт</string>
 
     <string name="insuranceRU">Страхование</string>
-
 
 
     <string name="SaveRU">Сохранить</string>
@@ -216,7 +204,6 @@
 
 
     <string name="descriptionRU">описание</string>
-
 
 
     <string name="latitudeRU">Широта</string>
@@ -266,9 +253,6 @@
     <string name="freeRu">Свободно</string>
 
 
-
-
-
     <string name="turn_on_flashlight">Turn on Flashlight</string>
 
     <string name="turn_off_flashlight">Turn off Flashlight</string>
@@ -281,14 +265,12 @@
 
     <string name="introRU">intro</string>
 
-    <string name="probel"/>
-
+    <string name="probel" />
 
 
     <string name="alerttestRU">Это алерт!!!</string>
 
     <string name="makephotoRU">Сделать фото</string>
-
 
 
     <string name="title_activity_vehicle_edit">VehicleEditActivity</string>
@@ -332,17 +314,27 @@
     <string name="marka_vehicle">Марка</string>
     -
 
-    -<string-array name="type_vehicle">
+    -
+    <string-array name="type_vehicle">
 
-    <item>11</item>
+        <item>11</item>
 
-    <item>22</item>
+        <item>22</item>
 
-    <item>33</item>
+        <item>33</item>
 
-    <item>44</item>
+        <item>44</item>
 
-    <item>55</item>
+        <item>55</item>
 
-</string-array>
+    </string-array>
+    <string name="title_activity_main_draw">MainDrawActivity</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_addneworder">AddneworderActivity</string>
 </resources>

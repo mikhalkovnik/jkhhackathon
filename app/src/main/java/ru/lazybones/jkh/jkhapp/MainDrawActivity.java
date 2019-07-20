@@ -20,8 +20,11 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -32,10 +35,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainDrawActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +59,10 @@ public class MainDrawActivity extends AppCompatActivity
     MapObject userplace;
     boolean allupdates;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
+    private ArrayList<PreOrder> preOrders;
+    private RecyclerView mRecyclerView;
+    private ReserveRVadapter adapter;
+    private TextView preordtv;
 
     @Override
     public void onStart() {
@@ -67,8 +79,79 @@ public class MainDrawActivity extends AppCompatActivity
             Constants.user.setUserid(currentUser.getUid());
             Constants.user.setUserphone(currentUser.getPhoneNumber());
             settoken();
+            updatedp();
 
         }
+    }
+
+    private void updatedp() {
+        mydatabase.child("users").child(Constants.user.getUserid()).child("preorders").child(Constants.objectid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
+                preOrders = new ArrayList<>();
+
+                if (dataSnapshot.exists()) {
+
+                    for (DataSnapshot snapshot1 :
+                            dataSnapshot.getChildren()) {
+
+                        PreOrder element = snapshot1.getValue(PreOrder.class);
+                        if (element!= null)
+
+                            preOrders.add(element);
+
+
+                    }
+
+                }
+                progressBar.setVisibility(View.GONE);
+                Current.preOrders=preOrders;
+                updatevepreorders();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+    }
+
+    private void updatevepreorders() {
+        if (preOrders.size()>0) preordtv.setText("Мои текущие заявки");
+        else preordtv.setText("Моих заявок в работе нет");
+
+
+        adapter = new ReserveRVadapter(this, preOrders);
+        mRecyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new ReserveRVadapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(PreOrder item, View v) {
+
+                Current.preOrder=item;
+
+//                if (v.getId()==R.id.thumbnailts) {
+//                    //button vehicle
+//                    if (item.getVehicleid()==null) {
+//                        chooservehlt.setVisibility(View.VISIBLE);
+//                    }
+//
+//
+//                }
+//                else {
+//
+//                    bottomSheet.show(getSupportFragmentManager(), "");
+//                }
+
+
+
+            }
+        });
+
     }
 
     @Override
@@ -87,6 +170,7 @@ public class MainDrawActivity extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                startActivity(new Intent(MainDrawActivity.this, AddneworderActivity.class));
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -96,6 +180,17 @@ public class MainDrawActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rec_view_orders);
+        LinearLayoutManager   linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        preordtv = (TextView) findViewById(R.id.ordersinfotv);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        Constants.objectid = "12345544545";
+
+
     }
 
     private void settoken() {

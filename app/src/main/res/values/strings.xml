@@ -1,31 +1,16 @@
 <resources>
     <string name="app_name">JKHapp</string>
-
-
     <string name="recomendstext">Рекомендуемые</string>
-
     <string name="watchall_text">Смотреть все</string>
-
     <string name="find_text">Поиск</string>
-
-
     <string name="view_button_text">Посмотреть</string>
-
     <string name="recom_text2">Строительные материалы</string>
-
-
     <string name="enterphone_text">Введите ваш телефон</string>
-
     <string name="takesmscod_text">Получить код по смс</string>
-
     <string name="notsms_text">Не пришел код?</string>
-
     <string name="repeat_sms">Отправить еще раз</string>
-
     <string name="entercod">Введите код</string>
-
     <string name="sendcod_text">Отправить код</string>
-
     <string name="action_logout">Выйти</string>
 
     <string name="profile">Профиль</string>
@@ -266,70 +251,39 @@
     <string name="introRU">intro</string>
 
     <string name="probel" />
-
-
     <string name="alerttestRU">Это алерт!!!</string>
-
     <string name="makephotoRU">Сделать фото</string>
-
-
     <string name="title_activity_vehicle_edit">VehicleEditActivity</string>
-
-
     <string name="yesRU">Да</string>
-
     <string name="noRU">Нет</string>
-
     <string name="editRU">Редактировать</string>
-
     <string name="title_activity_park_zone_info">ParkZoneInfoActivity</string>
-
-
     <string name="personapinfoRU">Персональная информация</string>
-
     <string name="preferencesRU">Настройки</string>
-
     <string name="payinstumentsRU">Платежные инструменты</string>
-
     <string name="mytarifRU">Мой тариф</string>
-
     <string name="aftorizationRU">Авторизация</string>
-
     <string name="outprofileRU">Выход из профиля</string>
-
     <string name="mailtotsRU">Написать письмо в тех поддержку</string>
-
     <string name="repeatIntroRU">повторить интро</string>
-
     <string name="guideRU">Инструкция</string>
-
     <string name="supportemail">kirnep@list.ru</string>
-
     <string name="subjectsupportRU">android версия</string>
-
     <string name="history">История</string>
-
     <string name="notificationsRU">Уведомления</string>
-
     <string name="marka_vehicle">Марка</string>
-    -
-
-    -
-    <string-array name="type_vehicle">
-
-        <item>11</item>
-
-        <item>22</item>
-
-        <item>33</item>
-
-        <item>44</item>
-
-        <item>55</item>
-
+    <string-array name="type_prior">
+        <item>аварийная ситуация</item>
+        <item>есть опасность для людей</item>
+        <item>предупреждающий ремонт</item>
+    </string-array>
+    <string-array name="type_works">
+        <item>ремонт водопровода</item>
+        <item>ремонт крыши</item>
+        <item>канализация</item>
+        <item>уборка придовомой территории</item>
     </string-array>
     <string name="title_activity_main_draw">MainDrawActivity</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>

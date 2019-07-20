@@ -1,3 +1,348 @@
 <resources>
     <string name="app_name">JKHapp</string>
+
+
+
+
+    <string name="recomendstext">Рекомендуемые</string>
+
+    <string name="watchall_text">Смотреть все</string>
+
+    <string name="find_text">Поиск</string>
+
+
+    <string name="view_button_text">Посмотреть</string>
+
+    <string name="recom_text2">Строительные материалы</string>
+
+
+
+    <string name="enterphone_text">Введите ваш телефон</string>
+
+    <string name="takesmscod_text">Получить код по смс</string>
+
+    <string name="notsms_text">Не пришел код?</string>
+
+    <string name="repeat_sms">Отправить еще раз</string>
+
+    <string name="entercod">Введите код</string>
+
+    <string name="sendcod_text">Отправить код</string>
+
+    <string name="action_logout">Выйти</string>
+
+    <string name="profile">Профиль</string>
+
+
+
+
+
+    <string name="Createquest_text">Создать свое задание</string>
+
+    <string name="paric_text">Парикмахер</string>
+
+
+
+    <string name="livingrooms_text">Жилье</string>
+
+    <string name="forwork_text">Для работы</string>
+
+    <string name="flats_text">Квартиры</string>
+
+    <string name="cotege_text">Коттеджи, Дома</string>
+
+    <string name="hotels_text">Гостиницы</string>
+
+    <string name="offices_text">Офисы</string>
+
+    <string name="warehousaes_text">Склады</string>
+
+    <string name="build_text">Стройка</string>
+
+    <string name="floors_text">Фундамент, стены, пол</string>
+
+    <string name="roof_text">Крыша</string>
+
+    <string name="repiar_text">Внутренний ремонт</string>
+
+
+
+    <string name="profile_text">Профиль</string>
+
+    <string name="changeName_text">Изменить имя</string>
+
+
+    <string name="save_text">Сохранить</string>
+
+    <string name="enterFullName_text">Введите Ваше полное имя</string>
+
+    <string name="addCategories_text">добавить категорию</string>
+
+
+
+    <string name="chCat_text">Выбрать Категорию</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="chooseCat_text">Выбор категории</string>
+
+    <string name="description_text">описание</string>
+
+    <string name="enter_work_description">введите описание работы</string>
+
+    <string name="Cancel_text">Отмена</string>
+
+    <string name="catalog_text">Каталог</string>
+
+    <string name="aboutworker_text">Об исполнителе</string>
+
+    <string name="plus7">+7</string>
+
+    <string name="regist_text">Регистрация</string>
+
+
+    <string name="mycaterories">Мои категории:</string>
+
+
+
+    <string name="zakaz">Заказ</string>
+
+    <string name="bron">Бронь</string>
+
+    <string name="info">Инфо</string>
+
+    <string name="workexp">Опыт работы</string>
+
+    <string name="Galerytext">Галерея</string>
+
+    <string name="docstext">Документы и сертификаты</string>
+
+    <string name="cancel2textcaps">ОТМЕНИТЬ</string>
+
+    <string name="download">Загрузить</string>
+
+    <string name="adress">Адрес</string>
+
+    <string name="Zakazat">Заказать</string>
+
+    <string name="registration">Регистрация</string>
+
+    <string name="formap">Координаты для карты</string>
+
+    <string name="longmap">Широта</string>
+
+    <string name="latitude">Долгота</string>
+
+    <string name="profile_worker">Профиль исполнителя</string>
+
+    <string name="infotext">Краткая информация</string>
+
+    <string name="delete">Удалить</string>
+
+    <string name="lock">Заблокировать</string>
+
+    <string name="unlock">Разблокировать</string>
+
+    <string name="lockedtext">Заблокирован</string>
+
+    <string name="deletemessage">Удаление приведет к потере всех Ваших данных. Вы можете временно Заблокировать</string>
+
+    <string name="deletetext2">Удалить</string>
+
+    <string name="deletedtext">Удаленно!</string>
+
+    <string name="errortext">ошибка</string>
+
+    <string name="demoMap">Здесь будет карта</string>
+
+    <string name="title_activity_main_map">MainMapActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_header_title">Android Studio</string>
+
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_history">HistoryActivity</string>
+
+    <string name="title_activity_profile">ProfileActivity</string>
+
+    <string name="title_activity_help">HelpActivity</string>
+
+    <string name="title_activity_admin">AdminActivity</string>
+
+    <string name="mapRU">Карта</string>
+
+    <string name="historyRU">История</string>
+
+    <string name="profileRU">Профиль</string>
+
+    <string name="myparkRU">Моя парковка</string>
+
+    <string name="helpRU">Помощь</string>
+
+    <string name="servisesRU">Сервисы</string>
+
+    <string name="title_activity_mypark">MyparkActivity</string>
+
+    <string name="adminRU">Панель администратора</string>
+
+    <string name="exampletextRU">Это пример текста</string>
+
+    <string name="title_activity_services">ServicesActivity</string>
+
+
+
+    <string name="textrepearRU">Ремонт</string>
+
+    <string name="insuranceRU">Страхование</string>
+
+
+
+    <string name="SaveRU">Сохранить</string>
+
+    <string name="cancelRU">Отмена</string>
+
+    <string name="adddeviceRU">Добавить устройство</string>
+
+
+    <string name="descriptionRU">описание</string>
+
+
+
+    <string name="latitudeRU">Широта</string>
+
+    <string name="longitudeRU">Долгота</string>
+
+    <string name="title_activity_admin_device">AdminDevice</string>
+
+    <string name="openRu">Открыть</string>
+
+    <string name="closeRU">Заброинровать</string>
+
+    <string name="delbookRU">cнять бронь</string>
+
+    <string name="textinfoRU">информация</string>
+
+    <string name="textopenRU">открыть</string>
+
+    <string name="renttextRU">забронировать</string>
+
+    <string name="adressRU">адресс</string>
+
+    <string name="continueRU">Продлить</string>
+
+    <string name="tocanelbook">Cнять бронь</string>
+
+    <string name="title_activity_my_transport">MyTransportActivity</string>
+
+    <string name="noitificationRU">Уведомления</string>
+
+    <string name="myvehiclesRU">Мои транспортные средства</string>
+
+    <string name="title_activity_vehicle_add">VehicleAddActivity</string>
+
+    <string name="title_activity_vehicle_info">VehicleInfoActivity</string>
+
+    <string name="datestartRU">дата выпуска</string>
+
+    <string name="itemnameRU">Название</string>
+
+    <string name="electroRU">Электро</string>
+
+    <string name="myctparkRU">Мой CTpark</string>
+
+    <string name="reservedRu">занято</string>
+
+    <string name="freeRu">Свободно</string>
+
+
+
+
+
+    <string name="turn_on_flashlight">Turn on Flashlight</string>
+
+    <string name="turn_off_flashlight">Turn off Flashlight</string>
+
+    <string name="default_notification_channel_id">998641</string>
+
+    <string name="torentRU">Сдать в аренду</string>
+
+    <string name="exitRU">Выход</string>
+
+    <string name="introRU">intro</string>
+
+    <string name="probel"/>
+
+
+
+    <string name="alerttestRU">Это алерт!!!</string>
+
+    <string name="makephotoRU">Сделать фото</string>
+
+
+
+    <string name="title_activity_vehicle_edit">VehicleEditActivity</string>
+
+
+    <string name="yesRU">Да</string>
+
+    <string name="noRU">Нет</string>
+
+    <string name="editRU">Редактировать</string>
+
+    <string name="title_activity_park_zone_info">ParkZoneInfoActivity</string>
+
+
+    <string name="personapinfoRU">Персональная информация</string>
+
+    <string name="preferencesRU">Настройки</string>
+
+    <string name="payinstumentsRU">Платежные инструменты</string>
+
+    <string name="mytarifRU">Мой тариф</string>
+
+    <string name="aftorizationRU">Авторизация</string>
+
+    <string name="outprofileRU">Выход из профиля</string>
+
+    <string name="mailtotsRU">Написать письмо в тех поддержку</string>
+
+    <string name="repeatIntroRU">повторить интро</string>
+
+    <string name="guideRU">Инструкция</string>
+
+    <string name="supportemail">kirnep@list.ru</string>
+
+    <string name="subjectsupportRU">android версия</string>
+
+    <string name="history">История</string>
+
+    <string name="notificationsRU">Уведомления</string>
+
+    <string name="marka_vehicle">Марка</string>
+    -
+
+    -<string-array name="type_vehicle">
+
+    <item>11</item>
+
+    <item>22</item>
+
+    <item>33</item>
+
+    <item>44</item>
+
+    <item>55</item>
+
+</string-array>
 </resources>

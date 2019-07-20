@@ -3,4 +3,33 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="mainButtonsTextColor">#6e6e6e</color>
+    <color name="background">#EFF4FF</color>
+    <color name="recomenstext_color">#111c37</color>
+    <color name="watchall_text_color">#01a1dd</color>
+    <color name="buttons_recom_color">#01BCED</color>
+    <color name="finder_text_color">#9b9b9b</color>
+    <color name="phonenumber_text_color">#7E7E7E</color>
+    <color name="rest_color">#b14afd</color>
+    <color name="sport_color">#fb9400</color>
+    <color name="makeup_color">#ffb801</color>
+    <color name="taxi_color">#79CA00</color>
+    <color name="renta_color">#f77163</color>
+    <color name="work_color">#4dabff</color>
+    <color name="subcat_text_color">#1e272e</color>
+    <color name="black">#010101</color>
+    <color name="bg_main">#F7F1E8</color>
+
+    <color name="actionbar_background">#FFFFFF</color>
+    <color name="workinfotext">#4e556a</color>
+    <color name="regitemtext">#141d39</color>
+    <color name="darktext1">#343434</color>
+    <color name="profileitemtextcolor">#4d4d4d</color>
+    <color name="green_dark">#80A459</color>
+    <color name="green_m">#b3cf59</color>
+    <color name="blue_medium">#7BC1C9</color>
+    <color name="blue_light">#8CC9D4</color>
+    <color name="dark_blue">#68A9C4</color>
+    <color name="yellow">#DDE479</color>
+    <color name="white">#ffffff</color>
 </resources>

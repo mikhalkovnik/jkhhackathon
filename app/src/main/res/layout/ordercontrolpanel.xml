@@ -16,7 +16,7 @@
         android:layout_margin="5dp"
         android:layout_weight="1"
         android:background="@drawable/roundedservices"
-        android:onClick="toservices"
+        android:onClick="tocancel"
         android:orientation="vertical">
 
         <ImageView

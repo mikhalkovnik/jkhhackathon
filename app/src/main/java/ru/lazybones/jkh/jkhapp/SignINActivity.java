@@ -233,6 +233,7 @@ public class SignINActivity extends AppCompatActivity {
         String userphone= user.getPhoneNumber();
 
         myRef.child("users").child(uid).child("phone").setValue(userphone);
+        myRef.child("users").child(uid).child("userid").setValue(uid);
 
         //место для добавления нового пользователя в базу данных
 

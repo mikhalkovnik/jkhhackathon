@@ -1,9 +1,12 @@
 package ru.lazybones.jkh.jkhapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -11,6 +14,8 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
@@ -33,6 +38,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,8 +46,11 @@ import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainDrawActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,7 +92,7 @@ public class MainDrawActivity extends AppCompatActivity
     }
 
     private void updateuserdp() {
-        mydatabase.child("workers").child(Constants.user.getUserphone()).addValueEventListener(new ValueEventListener() {
+        mydatabase.child("users").child(Constants.user.getUserid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -197,6 +206,116 @@ public class MainDrawActivity extends AppCompatActivity
 
 
         startActivity(new Intent(this, OrderInfoActivity.class));
+
+
+    }
+
+    public void tocancel(View view) {
+
+
+
+        String objectuid =  Current.preOrder.getObjectid();
+        String orderid = Current.preOrder.getId();
+        String keyuser = Constants.user.getUserid();
+
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/preorders/" + objectuid +"/"+ orderid , null);
+        childUpdates.put("/users/" + keyuser + "/preorders/" + objectuid +"/"+ orderid, null);
+
+        String status = Current.preOrder.getStatus();
+
+        if (status.equals("В обработке")) {
+
+            mydatabase.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(MainDrawActivity.this, "отменнено",Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MainDrawActivity.this, "ошибка",Toast.LENGTH_SHORT).show();
+                }
+            });
+            return;
+
+
+        }
+
+        else if (status.equals("назначен исполнитель")) {
+
+            AlertDialog.Builder reallydialog = new AlertDialog.Builder(this).setTitle("Вы уверенны что хотите отменить? Исполнитель уже назначен!!!")
+                    .setNegativeButton("не отменять!",null).setPositiveButton("Все равно отменить!!!", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            deleteorder();
+                        }
+                    });
+            reallydialog.create().show();
+
+            return;
+
+        }
+        AlertDialog.Builder reallydialog = new AlertDialog.Builder(this).setTitle("работы уже ведутся!!! Нельзя отменить заявку")
+                .setNegativeButton("не отменять!",null);
+
+        reallydialog.create().show();
+
+    }
+
+    private void deleteorder() {
+
+        mydatabase.child("users").child(Constants.user.getUserid()).child("preorders").child(Current.preOrder.getId()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                progressBar.setVisibility(View.VISIBLE);
+
+                if (dataSnapshot.exists()) {
+
+                        Order element = dataSnapshot.getValue(Order.class);
+                        if (element!= null)
+                            Current.order = element;
+
+                }
+
+               continueorderdelete();
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void continueorderdelete() {
+
+        String objectuid =  Current.preOrder.getObjectid();
+        String orderid = Current.preOrder.getId();
+        String keyuser = Constants.user.getUserid();
+        String workerid = Current.order.getWorkerId();
+
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/preorders/" + objectuid +"/"+ orderid , null);
+        childUpdates.put("/users/" + keyuser + "/preorders/" + objectuid +"/"+ orderid, null);
+        childUpdates.put("/workOrders/" + workerid + "/" +  orderid+ "/" +"status", "отменен");
+        childUpdates.put("/workOrders/" + workerid + "/" +  orderid+ "/" +"stage", "отменен");
+
+        mydatabase.updateChildren(childUpdates).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(MainDrawActivity.this, "отменнено",Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MainDrawActivity.this, "ошибка",Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

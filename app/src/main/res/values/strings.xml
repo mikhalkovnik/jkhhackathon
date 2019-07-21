@@ -291,4 +291,6 @@
     <string name="filtertext">filter</string>
     <string name="exittext">Выход</string>
     <string name="messagetext3">сообщение</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="lazybones_homeserve">Lazybones Homeserve</string>
 </resources>

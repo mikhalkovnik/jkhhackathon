@@ -59,6 +59,8 @@ public class MainDrawActivity extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private ReserveRVadapter adapter;
     private TextView preordtv;
+    private OrderControlPanel bottomSheet;
+
 
     @Override
     public void onStart() {
@@ -75,9 +77,27 @@ public class MainDrawActivity extends AppCompatActivity
             Constants.user.setUserid(currentUser.getUid());
             Constants.user.setUserphone(currentUser.getPhoneNumber());
             settoken();
-            updatedp();
+            updateuserdp();
 
         }
+    }
+
+    private void updateuserdp() {
+        mydatabase.child("workers").child(Constants.user.getUserphone()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    User element = dataSnapshot.getValue(User.class);
+                    Constants.user=element;
+                    updatedp();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void updatedp() {
@@ -86,7 +106,6 @@ public class MainDrawActivity extends AppCompatActivity
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 progressBar.setVisibility(View.VISIBLE);
                 preOrders = new ArrayList<>();
-
                 if (dataSnapshot.exists()) {
 
                     for (DataSnapshot snapshot1 :
@@ -96,25 +115,18 @@ public class MainDrawActivity extends AppCompatActivity
                         if (element!= null)
 
                             preOrders.add(element);
-
-
                     }
-
                 }
                 progressBar.setVisibility(View.GONE);
                 Current.preOrders=preOrders;
                 updatevepreorders();
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
-
-
     }
 
     private void updatevepreorders() {
@@ -130,18 +142,9 @@ public class MainDrawActivity extends AppCompatActivity
 
                 Current.preOrder=item;
 
-//                if (v.getId()==R.id.thumbnailts) {
-//                    //button vehicle
-//                    if (item.getVehicleid()==null) {
-//                        chooservehlt.setVisibility(View.VISIBLE);
-//                    }
-//
-//
-//                }
-//                else {
-//
-//                    bottomSheet.show(getSupportFragmentManager(), "");
-//                }
+                Current.preOrder=item;
+
+                    bottomSheet.show(getSupportFragmentManager(), "");
 
 
 
@@ -185,7 +188,23 @@ public class MainDrawActivity extends AppCompatActivity
         preordtv = (TextView) findViewById(R.id.ordersinfotv);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         Constants.objectid = "12345544545";
+        bottomSheet = new OrderControlPanel();
 
+
+    }
+
+    public void toinfo(View view) {
+
+
+        startActivity(new Intent(this, OrderInfoActivity.class));
+
+
+    }
+
+
+    public void toask(View view) {
+
+        startActivity(new Intent(this, ChatBoxActivity.class));
 
     }
 

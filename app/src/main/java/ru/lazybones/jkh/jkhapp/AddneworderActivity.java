@@ -50,9 +50,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -63,7 +61,6 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AddneworderActivity extends AppCompatActivity
@@ -103,6 +100,7 @@ public class AddneworderActivity extends AppCompatActivity
     private int idTypePrior = 0;
     private Spinner typeWorks;
     private int idTypeWorks = 0;
+    private String orderid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +139,7 @@ public class AddneworderActivity extends AppCompatActivity
         numberphoto=numberph+"";
 
         mydatabase= FirebaseDatabase.getInstance().getReference();
+         orderid = mydatabase.child("preorders").child(objectuid).push().getKey();
 
 
         addimage= new ImageView(this);
@@ -208,7 +207,7 @@ public class AddneworderActivity extends AppCompatActivity
             }
         });
 
-        mydatabase.child("objects").child(objectuid).child("galeries").child(key).addValueEventListener(new ValueEventListener(){
+        mydatabase.child("objects").child(objectuid).child("galeries").child(key).child(orderid).addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -281,8 +280,9 @@ public class AddneworderActivity extends AppCompatActivity
 
                     Current.uidnumber=(Integer) v.getTag();
                     Current.url=galery.get(Current.uidnumber);
+                    dlggalery = new GaleryDialog();
 
-                    dlggalery.show(getSupportFragmentManager(), v.getTag().toString());
+                    dlggalery.show(getSupportFragmentManager(), "gallery");
 
                 }
             });
@@ -420,7 +420,7 @@ public class AddneworderActivity extends AppCompatActivity
     private void getimageURL (String url)  {
 
         myRef = FirebaseDatabase.getInstance().getReference();
-        myRef.child("objects").child(objectuid).child("galeries").child(key).child(numberphoto).setValue(url);
+        myRef.child("objects").child(objectuid).child("galeries").child(key).child(orderid).child(numberphoto).setValue(url);
         Toast.makeText(AddneworderActivity.this, "изображение обновленно",
                 Toast.LENGTH_SHORT).show();
 
@@ -526,7 +526,7 @@ public class AddneworderActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.addneworder, menu);
+        getMenuInflater().inflate(R.menu.main_draw, menu);
         return true;
     }
 
@@ -552,16 +552,24 @@ public class AddneworderActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            Intent intent = new Intent(this, MainDrawActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_orders) {
+            Intent intent = new Intent(this, MyordersActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_payment) {
+            Intent intent = new Intent(this, PaymentActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_notification) {
+            Intent intent = new Intent(this, NotificationActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
 
         }
 

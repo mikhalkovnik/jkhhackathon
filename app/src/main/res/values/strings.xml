@@ -291,4 +291,10 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_addneworder">AddneworderActivity</string>
+    <string name="meorders">Мои заявки</string>
+    <string name="payment">Оплата</string>
+    <string name="title_activity_myorders">MyordersActivity</string>
+    <string name="title_activity_payment">PaymentActivity</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>

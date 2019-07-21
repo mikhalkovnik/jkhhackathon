@@ -24,11 +24,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AddneworderActivity"
-            android:label="@string/title_activity_addneworder"
+            android:name="ru.lazybones.jkh.jkhapp.SettingsActivity"
+            android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".MainDrawActivity"
+            android:name="ru.lazybones.jkh.jkhapp.NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="ru.lazybones.jkh.jkhapp.PaymentActivity"
+            android:label="@string/title_activity_payment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="ru.lazybones.jkh.jkhapp.MyordersActivity"
+            android:label="@string/title_activity_myorders"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="ru.lazybones.jkh.jkhapp.AddneworderActivity"
+            android:label="@string/title_activity_addneworder"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="ru.lazybones.jkh.jkhapp.MainDrawActivity"
             android:label="@string/title_activity_main_draw"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -37,9 +53,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name="ru.lazybones.jkh.jkhapp.MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name="ru.lazybones.jkh.jkhapp.SplashActivity"
             android:theme="@style/splashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,7 +64,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignINActivity"
+            android:name="ru.lazybones.jkh.jkhapp.SignINActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

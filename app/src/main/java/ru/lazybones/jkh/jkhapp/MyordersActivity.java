@@ -3,8 +3,6 @@ package ru.lazybones.jkh.jkhapp;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,15 +16,11 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.yandex.mapkit.map.MapObject;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -43,7 +37,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainDrawActivity extends AppCompatActivity
+public class MyordersActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
@@ -61,23 +55,41 @@ public class MainDrawActivity extends AppCompatActivity
     private TextView preordtv;
 
     @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null) {
-            Intent intent = new Intent(this, SignINActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        else {
-            Constants.user = new User();
-            Constants.user.setUserid(currentUser.getUid());
-            Constants.user.setUserphone(currentUser.getPhoneNumber());
-            settoken();
-            updatedp();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_myorders);
 
-        }
+        mAuth = FirebaseAuth.getInstance();
+        mydatabase= FirebaseDatabase.getInstance().getReference();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                startActivity(new Intent(MyordersActivity.this, AddneworderActivity.class));
+            }
+        });
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.rec_view_orders);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        preordtv = (TextView) findViewById(R.id.ordersinfotv);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        Constants.objectid = "12345544545";
+
+        updatedp();
     }
 
     private void updatedp() {
@@ -116,7 +128,6 @@ public class MainDrawActivity extends AppCompatActivity
 
 
     }
-
     private void updatevepreorders() {
         if (preOrders.size()>0) preordtv.setText("Мои текущие заявки");
         else preordtv.setText("Моих заявок в работе нет");
@@ -151,68 +162,6 @@ public class MainDrawActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_draw);
-
-        mAuth = FirebaseAuth.getInstance();
-        mydatabase= FirebaseDatabase.getInstance().getReference();
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                startActivity(new Intent(MainDrawActivity.this, AddneworderActivity.class));
-            }
-        });
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.rec_view_orders);
-        LinearLayoutManager   linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        preordtv = (TextView) findViewById(R.id.ordersinfotv);
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-        Constants.objectid = "12345544545";
-
-
-    }
-
-    private void settoken() {
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-
-                            return;
-                        }
-
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-
-                        mydatabase.child("users").child(mAuth.getCurrentUser().getUid()).child("nottoken").setValue(token);
-
-                    }
-                });
-
-        FirebaseMessaging.getInstance().subscribeToTopic("allnot");
-
-    }
-
-
-    @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -225,7 +174,7 @@ public class MainDrawActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_draw, menu);
+        getMenuInflater().inflate(R.menu.myorders, menu);
         return true;
     }
 
@@ -251,11 +200,11 @@ public class MainDrawActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-//           Intent intent = new Intent(this, MainDrawActivity.class);
-//           startActivity(intent);
-        } else if (id == R.id.nav_orders) {
-            Intent intent = new Intent(this, MyordersActivity.class);
+            Intent intent = new Intent(this, MainDrawActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_orders) {
+//            Intent intent = new Intent(this, MyordersActivity.class);
+//            startActivity(intent);
 
         } else if (id == R.id.nav_payment) {
             Intent intent = new Intent(this, PaymentActivity.class);

@@ -15,6 +15,7 @@ public class Current {
     public static String phonenumber="";
     public static ArrayList<PreOrder> preOrders;
     public static PreOrder preOrder;
+    public static Order order;
 
 
     public static int getResId(String resName, Class<?> c) {

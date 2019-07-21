@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-class PreOrder {
+class Order {
     private String id;
     private String userphone;
     private String userid;
@@ -17,16 +17,39 @@ class PreOrder {
     private String status;
     private String stage;
     private long time;
+    private String workerId;
+    private String workerName;
+    private String workerPhone;
     private ArrayList<String> photourls;
 
-    public PreOrder() {}
+
+    public Order() {}
 
 
-    public PreOrder(String userphone, String userid, String id) {
+    public Order(String userphone, String userid) {
             this.time = new Date().getTime();
          this.userphone = userphone;
          this.userid = userid;
-         this.id= id;
+
+     }
+     public Order (PreOrder preOrder, String workerId, String workerName, String workerPhone) {
+        this.id=preOrder.getId();
+        this.adress= preOrder.getAdress();
+        this.info=preOrder.getInfo();
+        this.userphone=preOrder.getUserphone();
+        this.userid=preOrder.getUserid();
+        this.objectid=preOrder.getObjectid();
+        this.priority=preOrder.getPriority();
+        this.time=preOrder.getTime();
+        this.photourls=preOrder.getPhotourls();
+        this.tipe=preOrder.getTipe();
+         this.workerId = workerId;
+         this.workerName = workerName;
+         this.workerPhone = workerPhone;
+         this.stage="принят в исполнение";
+         this.status="назначен исполнитель";
+
+
 
      }
 
@@ -38,13 +61,16 @@ class PreOrder {
              result.put("objectid",  objectid);
              result.put("adress", adress);
              result.put("priority", priority);
-         result.put("tipe", tipe);
-         result.put("photourls", photourls);
-         result.put("info", info);
-         result.put("status",status);
-         result.put("stage", stage);
-         result.put("time", time);
-         result.put("id", id);
+             result.put("tipe", tipe);
+             result.put("photourls", photourls);
+             result.put("info", info);
+             result.put("status",status);
+             result.put("stage", stage);
+             result.put("time", time);
+             result.put("workerId", workerId);
+             result.put("id", id);
+             result.put("workerName", workerName);
+             result.put("workerPhone", workerPhone);
 
 
          return result;
@@ -147,5 +173,29 @@ class PreOrder {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getWorkerId() {
+        return workerId;
+    }
+
+    public void setWorkerId(String workerId) {
+        this.workerId = workerId;
+    }
+
+    public String getWorkerName() {
+        return workerName;
+    }
+
+    public void setWorkerName(String workerName) {
+        this.workerName = workerName;
+    }
+
+    public String getWorkerPhone() {
+        return workerPhone;
+    }
+
+    public void setWorkerPhone(String workerPhone) {
+        this.workerPhone = workerPhone;
     }
 }

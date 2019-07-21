@@ -12,38 +12,8 @@
     <string name="entercod">Введите код</string>
     <string name="sendcod_text">Отправить код</string>
     <string name="action_logout">Выйти</string>
-
     <string name="profile">Профиль</string>
-
-
     <string name="Createquest_text">Создать свое задание</string>
-
-    <string name="paric_text">Парикмахер</string>
-
-
-    <string name="livingrooms_text">Жилье</string>
-
-    <string name="forwork_text">Для работы</string>
-
-    <string name="flats_text">Квартиры</string>
-
-    <string name="cotege_text">Коттеджи, Дома</string>
-
-    <string name="hotels_text">Гостиницы</string>
-
-    <string name="offices_text">Офисы</string>
-
-    <string name="warehousaes_text">Склады</string>
-
-    <string name="build_text">Стройка</string>
-
-    <string name="floors_text">Фундамент, стены, пол</string>
-
-    <string name="roof_text">Крыша</string>
-
-    <string name="repiar_text">Внутренний ремонт</string>
-
-
     <string name="profile_text">Профиль</string>
 
     <string name="changeName_text">Изменить имя</string>
@@ -297,4 +267,28 @@
     <string name="title_activity_payment">PaymentActivity</string>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="ask">Задать вопрос</string>
+    <string name="title_activity_order_info">OrderInfoActivity</string>
+    <string name="title_activity_chat_box">ChatBoxActivity</string>
+
+    <string name="accaunttext">Аккаунт</string>
+    <string name="preftext">Настройки</string>
+    <string name="notificationstext">Уведомления</string>
+    <string name="passcodelocktext">Код блокировки</string>
+    <string name="privacytext">Настройки приватности</string>
+    <string name="feedbacktext">Обратная связь</string>
+    <string name="abouttextru">О приложении</string>
+    <string name="paytesttext">Оплата Тест</string>
+    <string name="premiumtext">PREMIUM</string>
+    <string name="messagecopy">ID скопирован в буфер обмена</string>
+    <string name="partnerstext">Партнёры</string>
+    <string name="buytext">Покупки</string>
+    <string name="historytext">История</string>
+    <string name="mentext">Мужчина</string>
+    <string name="womentext">Женщина</string>
+    <string name="testbuynew">Купить карту тест 1000 баллов</string>
+    <string name="addmoneytest">Добавить баллов тест</string>
+    <string name="filtertext">filter</string>
+    <string name="exittext">Выход</string>
+    <string name="messagetext3">сообщение</string>
 </resources>

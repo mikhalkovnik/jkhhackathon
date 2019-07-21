@@ -447,11 +447,10 @@ public class AddneworderActivity extends AppCompatActivity
     public void saveworkerbd(View view) {
 
         String keyuser = Constants.user.getUserid();
-        String orderid = mydatabase.child("preorders").child(objectuid).push().getKey();
 
         String infot = info.getText().toString();
 
-        PreOrder updatePreorder = new PreOrder(Constants.user.getUserphone(),Constants.user.getUserid());
+        PreOrder updatePreorder = new PreOrder(Constants.user.getUserphone(),Constants.user.getUserid(), orderid);
 
         updatePreorder.setInfo(infot);
 
